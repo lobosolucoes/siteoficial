@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lobo Soluções — Deixe o sol pagar sua conta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a2416" />
+  <meta name="description" content="Energia solar para empresas e residências. Pague só a taxa mínima: deixe o sol pagar sua conta com a Lobo Soluções." />
+  <meta property="og:title" content="Lobo Soluções — Deixe o sol pagar sua conta" />
+  <meta property="og:description" content="Projetos solares com foco em economia, performance e garantia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Lobo+Solucoes" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#040806;
+      --bg-2:#08130d;
+      --card:#0a1c12;
+      --brand:#20c96b;      /* verde principal */
+      --brand-2:#16a957;    /* verde escuro */
+      --accent:#ffd54a;     /* amarelo sol */
+      --text:#f3fff8;
+      --muted:#b7d2c3;
+      --line:#0f2a1b;
+      --error:#ff5757;
+      --radius:18px;
+      --shadow:0 18px 40px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:"Poppins",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(32,201,107,.12), transparent 60%),
+        radial-gradient(900px 500px at 10% -10%, rgba(32,201,107,.08), transparent 55%),
+        linear-gradient(180deg, #031006 0%, #050a07 100%);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+    }
+    :root{scrollbar-gutter:stable}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;display:block}
+
+    /* header */
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(10px);
+      background:linear-gradient(to bottom, rgba(5,10,7,.85), rgba(5,10,7,.55), transparent);
+      border-bottom:1px solid rgba(32,201,107,.15);
+    }
+    .nav{
+      max-width:1180px;margin:0 auto;padding:10px 16px;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-mark{
+      width:42px;height:42px;border-radius:999px;
+      background: radial-gradient(circle at 35% 35%, #3cff9f, #159a53);
+      position:relative;box-shadow:0 0 22px rgba(32,201,107,.45);
+      border:2px solid rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+    .brand-img{height:auto;display:block}
+    .brand-mark:after{
+      content:"";position:absolute;inset:8px;border-radius:50%;
+      background: radial-gradient(circle at 60% 40%, #ffe680 0, #ffcc33 60%, transparent 61%);
+      filter:blur(1px);opacity:.85;
+    }
+    .brand-text{display:flex;flex-direction:column;line-height:1}
+    .brand-text b{letter-spacing:.03em}
+    .brand-text small{color:var(--muted)}
+    .sigla-wrap{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;justify-content:center}
+    .sigla-img{max-width:520px;width:100%}
+    .nav-links{display:flex;gap:18px;flex-wrap:wrap}
+    .nav-links a{
+      font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--muted);position:relative
+    }
+    .nav-links a:after{
+      content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--brand),#9cffcd);
+      transition:width .15s ease
+    }
+    .nav-links a:hover{color:#a8ffd1}
+    .nav-links a:hover:after{width:100%}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:6px;
+      padding:9px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(135deg, var(--brand), #7dffb6);
+      color:#03250f;font-weight:700;letter-spacing:.03em;box-shadow:0 8px 20px rgba(32,201,107,.24);
+      cursor:pointer;transition:transform .12s ease, box-shadow .12s ease, opacity .2s ease;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 16px 32px rgba(32,201,107,.34)}
+    .btn-ghost{
+      background:transparent;color:#baf4d2;border:1px solid rgba(32,201,107,.35);box-shadow:none
+    }
+    .btn-ghost:hover{background:rgba(32,201,107,.08)}
+
+    /* hero */
+    .hero{padding:22px 16px 18px}
+    .hero-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
+    .badge{
+      display:inline-flex;align-items:center;gap:10px;padding:6px 10px;border-radius:999px;
+      background:rgba(32,201,107,.10);border:1px solid rgba(32,201,107,.25);margin-bottom:14px
+    }
+    .badge span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#a6ffd0}
+    .title{font-size:clamp(24px,3vw,36px);line-height:1.15;font-weight:800;margin-bottom:8px}
+    .title .hl{color:#aaffcf;text-shadow:0 0 18px rgba(110,255,187,.35)}
+    .subtitle{color:var(--muted);max-width:620px;margin-bottom:12px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+    .hero-note{font-size:12px;color:var(--muted);margin-top:8px}
+    .hero-card{
+      background:radial-gradient(120% 100% at 0 0, #113d25 0, #0a1c12 46%, #07140d 100%);
+      border:1px solid rgba(32,201,107,.18);border-radius:24px;padding:20px;box-shadow:var(--shadow)
+    }
+    .meter{
+      margin-top:10px;height:10px;border-radius:999px;background:#0e261a;border:1px solid #113b25;overflow:hidden
+    }
+    .meter > b{display:block;height:100%;width:78%;background:linear-gradient(90deg,#2af37a,#baffda)}
+    .audio-wrap{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+    .audio-btn{
+      border:none;border-radius:999px;background:#0f2a1b;color:#baffda;
+      padding:10px 14px;cursor:pointer;border:1px solid rgba(32,201,107,.35)
+    }
+    .audio-caption{font-size:12px;color:#b1e8cb}
+
+    /* sections */
+    section{padding:28px 16px}
+    .wrap{max-width:1180px;margin:0 auto}
+    .sec-title{font-size:clamp(20px,2.2vw,26px);margin-bottom:10px}
+    .sec-sub{color:var(--muted);margin-bottom:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .card{
+      background:linear-gradient(180deg,#0b1e13,#08160f);border:1px solid rgba(32,201,107,.14);
+      border-radius:16px;padding:14px;box-shadow:var(--shadow)
+    }
+    .icon{
+      width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
+      background:radial-gradient(circle at 35% 35%, #28f07b, #12984d);color:#02230f;margin-bottom:8px;font-weight:900
+    }
+    .muted{color:var(--muted);font-size:14px}
+
+    /* calc */
+    .calc{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:12px;align-items:stretch
+    }
+    .calc aside{
+      background:linear-gradient(180deg,#0b2116,#0a1b13);border:1px solid rgba(32,201,107,.16);
+      border-radius:16px;padding:14px
+    }
+    .row{display:flex;gap:8px}
+    .row .form-group{flex:1}
+    label{font-size:12px;color:#bfead1}
+    input,select{
+      width:100%;margin-top:6px;padding:8px 10px;border-radius:10px;border:1px solid #153d29;background:#0a1a12;color:var(--text);
+      outline:none;transition:all .15s ease
+    }
+    input:focus,select:focus{border-color:#2ff68a;box-shadow:0 0 0 1px rgba(47,246,138,.25)}
+    .calc-output{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px
+    }
+    .kpi{
+      border-radius:12px;border:1px solid rgba(255,255,255,.06);padding:12px;background:#0c2015
+    }
+    .kpi b{font-size:18px}
+    .kpi small{display:block;color:var(--muted);margin-top:4px}
+
+    /* cases/testimonials */
+    .case{
+      border-radius:16px;overflow:hidden;border:1px solid rgba(32,201,107,.12);background:#0a1b13
+    }
+    .case img{aspect-ratio:16/9;object-fit:cover;width:100%}
+    .case .p{padding:12px}
+    .quote{
+      background:linear-gradient(180deg,#0b1f14,#0a1a13);border:1px solid rgba(32,201,107,.14);
+      border-radius:16px;padding:16px
+    }
+    .quote p{font-size:14px}
+    .quote b{display:block;margin-top:8px;color:#c8ffe3}
+
+    /* form */
+    .form-card{
+      background:radial-gradient(120% 120% at 0 0, #113d25 0, #0a1c13 50%, #07140d 100%);
+      border:1px solid rgba(32,201,107,.22);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 18px 40px rgba(0,0,0,.45);
+      backdrop-filter:blur(6px)
+    }
+    .indicado-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0;padding:12px;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:#0c2015}
+    .indicado-header{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:#c8ffe3;font-weight:600}
+    .chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;background:linear-gradient(135deg,var(--brand),#7dffb6);color:#03250f;font-weight:800}
+    input,select{height:36px}
+    input::placeholder{color:#92c8ac}
+    #addBtn{border-color:rgba(32,201,107,.45)}
+
+    /* cta final */
+    .cta{
+      text-align:center;background:radial-gradient(120% 100% at 0 0, #0f3b24 0, #0b2015 50%, #09160f 100%);
+      border:1px solid rgba(32,201,107,.18);border-radius:18px;padding:16px
+    }
+
+    /* footer */
+    footer{
+      border-top:1px solid rgba(32,201,107,.12);padding:12px 16px;color:var(--muted);text-align:center
+    }
+
+    /* floating whatsapp */
+    .wa{
+      position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:10px
+    }
+    .wa a{
+      width:48px;height:48px;border-radius:999px;background:#25D366;display:grid;place-items:center;
+      box-shadow:0 8px 20px rgba(37,211,102,.35)
+    }
+    .wa small{background:#0a1c12;border:1px solid rgba(255,255,255,.08);padding:8px 10px;border-radius:10px}
+
+    /* responsive */
+    @media (max-width: 1024px){
+      .hero-inner{grid-template-columns:1fr;gap:18px}
+      .calc{grid-template-columns:1fr}
+    }
+    @media (max-width: 820px){
+      .grid-3{grid-template-columns:1fr 1fr}
+      .calc-output{grid-template-columns:1fr 1fr 1fr}
+      .row{flex-direction:column}
+      header{backdrop-filter:none;background:rgba(5,10,7,.85)}
+    }
+    @media (max-width: 560px){
+      .nav{justify-content:center}
+      .nav-links{width:100%;justify-content:center}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .calc-output{grid-template-columns:1fr}
+      .btn,.btn-ghost{width:100%}
+      .nav{flex-wrap:nowrap}
+      header{backdrop-filter:none;background:rgba(5,10,7,.85)}
+    }
+  </style>
+  <style>
+    .wrap{max-width:820px;margin:0 auto;padding:0 16px}
+    .nav{max-width:820px;margin:0 auto;padding:10px 20px}
+    .sigla-wrap{max-width:820px;margin:0 auto;padding:12px 24px;display:flex;justify-content:center}
+    .sigla-img{max-width:88px;width:100%;height:auto;object-fit:contain}
+    .brand-img{max-width:88px;width:100%;height:auto;object-fit:contain}
+    @media (max-width: 560px){
+      .wrap{padding:0 16px}
+      .nav{padding:8px 16px;gap:8px}
+      .brand-img{max-width:64px}
+      .brand-text b{font-size:14px}
+      .brand-text small{display:none}
+      .nav-links{display:none}
+      .btn-ghost{padding:9px 14px;font-weight:600}
+      .sigla-wrap{padding:8px 16px}
+      .sigla-img{max-width:64px}
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <img class="brand-img" src="assets/logo.png" alt="Lobo Soluções" loading="eager" decoding="async" onerror="this.style.display='none'">
+        <div class="brand-text">
+          <b>Lobo Soluções</b>
+          <small>Energia Solar • Gandu • Cruz das Almas</small>
+        </div>
+        <img class="sigla-img" src="assets/sigla.png" alt="Deixe o sol pagar sua conta" loading="eager" decoding="async" onerror="this.style.display='none'">
+      </div>
+      <div class="nav-links">
+        <a href="#form">Formulário</a>
+      </div>
+      <button class="btn-ghost" onclick="scrollToId('form')">Quero economizar</button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="sobre" style="display:none">
+    <div class="hero-inner">
+      <div>
+        <div class="badge"><span>energia que gera economia</span></div>
+        <h1 class="title">Deixe o sol pagar sua conta com a <span class="hl">Lobo Soluções</span>.</h1>
+        <p class="subtitle">Projetos solares para empresas e residências: estudo de consumo, financiamento facilitado e instalação com garantia. Seu objetivo é pagar só a taxa mínima? A gente te leva lá.</p>
+        <div class="hero-actions">
+          <button class="btn" onclick="scrollToId('form')">Fazer avaliação gratuita</button>
+          <a class="btn-ghost" href="#como-funciona">Entender o passo a passo</a>
+        </div>
+        <p class="hero-note">Atendemos Bahia e região. Foco em resultado, segurança e prazo.</p>
+
+        <div class="audio-wrap">
+          <button class="audio-btn" id="audioToggle">▶️ Ouvir: “Deixe o sol pagar sua conta”</button>
+          <span class="audio-caption">Ative o áudio quando quiser (adicione seu arquivo MP3 no código).</span>
+          <audio id="sloganAudio" preload="auto">
+            <!-- <source src="URL_DO_SEU_AUDIO.mp3" type="audio/mpeg" /> -->
+          </audio>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <b>Economia potencial no seu perfil</b>
+        <p class="muted">Baseado em contas acima de R$ 200/mês no Brasil.</p>
+        <div class="meter" aria-label="Estimativa de economia"><b></b></div>
+
+        <div class="calc" style="margin-top:14px">
+          <div>
+            <h3 class="sec-title" style="font-size:18px;margin-bottom:10px">Simulador rápido</h3>
+            <div class="row">
+              <div class="form-group">
+                <label>Conta média (R$)</label>
+                <input type="number" id="bill" placeholder="Ex: 450" min="100" />
+              </div>
+              <div class="form-group">
+                <label>Tipo do imóvel</label>
+                <select id="tipo">
+                  <option value="residencial">Residencial</option>
+                  <option value="comercial">Comercial</option>
+                  <option value="rural">Rural</option>
+                </select>
+              </div>
+            </div>
+            <div class="row" style="margin-top:10px">
+              <div class="form-group">
+                <label>Cidade/BA</label>
+                <input type="text" id="cidade" placeholder="Ex: Gandu" />
+              </div>
+              <div class="form-group">
+                <label>Tarifa (R$/kWh)</label>
+                <input type="number" id="tarifa" step="0.01" placeholder="Ex: 1.20" />
+              </div>
+            </div>
+            <div class="calc-output">
+              <div class="kpi">
+                <b id="kwh">-</b>
+                <small>Consumo estimado (kWh/mês)</small>
+              </div>
+              <div class="kpi">
+                <b id="economia">-</b>
+                <small>Economia estimada/mês</small>
+              </div>
+              <div class="kpi">
+                <b id="payback">-</b>
+                <small>Payback estimado</small>
+              </div>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn" onclick="calc()">Calcular</button>
+              <button class="btn-ghost" onclick="scrollToId('form')">Receber proposta detalhada</button>
+            </div>
+            <p class="muted" style="margin-top:8px;font-size:12px">*Simulação básica. Valores finais variam conforme radiação local, telhado, inversor, string box, perdas e taxas.</p>
+          </div>
+          <aside>
+            <h4 style="margin-bottom:8px">Vantagens imediatas</h4>
+            <ul class="muted" style="display:grid;gap:6px">
+              <li>• Redução da conta para a taxa mínima</li>
+              <li>• Valorização do imóvel/negócio</li>
+              <li>• Financiamento fácil e rápido</li>
+              <li>• Monitoramento e garantia</li>
+              <li>• Instalação por equipe certificada</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section id="beneficios" style="display:none">
+    <div class="wrap">
+      <h2 class="sec-title">Por que escolher a Lobo?</h2>
+      <p class="sec-sub">Equipe própria, projeto sob medida e compromisso com seu resultado.</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">⚡</div>
+          <b>Projeto otimizado</b>
+          <p class="muted">Dimensionamento real do seu consumo e telhado, evitando sobra ou falta.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🛠️</div>
+          <b>Instalação segura</b>
+          <p class="muted">Equipe certificada, homologação com a concessionária e PPRA/NR.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📈</div>
+          <b>Economia previsível</b>
+          <p class="muted">Acompanhe geração e retorno. Foco em pagar só a taxa mínima.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="como-funciona" style="display:none">
+    <div class="wrap">
+      <h2 class="sec-title">Como funciona</h2>
+      <p class="sec-sub">Do diagnóstico ao “deixe o sol pagar sua conta”.</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">1</div>
+          <b>Diagnóstico</b>
+          <p class="muted">Análise da conta, consumo e estrutura (telhado/solo).</p>
+        </div>
+        <div class="card">
+          <div class="icon">2</div>
+          <b>Projeto & aprovação</b>
+          <p class="muted">Proposta detalhada, financiamento opcional e cronograma.</p>
+        </div>
+        <div class="card">
+          <div class="icon">3</div>
+          <b>Instalação & homologação</b>
+          <p class="muted">Ligou, gerou, compensou. Acompanhamento e suporte contínuo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section id="cases" style="display:none">
+    <div class="wrap">
+      <h2 class="sec-title">Alguns resultados</h2>
+      <p class="sec-sub">Comércio, pousada, açougue, fardamento, hotel... Lobo está na região.</p>
+      <div class="grid-3">
+        <div class="case">
+          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop" alt="Sistema solar comercial" />
+          <div class="p">
+            <b>Comercial — 32 kWp</b>
+            <p class="muted">Redução média: 87% da fatura.</p>
+          </div>
+        </div>
+        <div class="case">
+          <img src="https://images.unsplash.com/photo-1509395062183-67c5ad6faff9?q=80&w=1200&auto=format&fit=crop" alt="Sistema solar residencial" />
+          <div class="p">
+            <b>Residencial — 8 kWp</b>
+            <p class="muted">Conta mínima e payback ~3,8 anos.</p>
+          </div>
+        </div>
+        <div class="case">
+          <img src="https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62?q=80&w=1200&auto=format&fit=crop" alt="Sistema solar rural" />
+          <div class="p">
+            <b>Rural — 18 kWp</b>
+            <p class="muted">Estabilidade para produção e refrigeração.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section style="display:none">
+    <div class="wrap grid-2">
+      <div class="quote">
+        <p>“Depois da instalação, minha conta ficou só a taxa mínima. Atendimento rápido e tudo bem explicado.”</p>
+        <b>Marcelo — Comércio</b>
+      </div>
+      <div class="quote">
+        <p>“O projeto foi feito certinho pro meu consumo. Já se pagou na operação do meu negócio.”</p>
+        <b>Paula — Hotelaria</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULÁRIO DE INDICAÇÃO -->
+  <section id="form">
+        <div class="wrap">
+      <h2 class="sec-title">Formulário de Indicação</h2>
+      <p class="sec-sub">
+        Você pode indicar quantas pessoas quiser. A cada <strong>3 amigos</strong> que fecharem com a Lobo,
+        após a instalação você recebe um <strong>PIX de R$500,00</strong>!
+        Não é sorteio... <strong>INDICOU, FECHOU, GANHOU!</strong>
+      </p>
+
+      <div class="form-card">
+        <form id="indicacaoForm" onsubmit="return submitIndicacao(event)">
+          <div class="grid-2">
+            <div class="form-group">
+              <label>Seu nome</label>
+              <input type="text" id="indicanteNome" required placeholder="Seu nome completo">
+            </div>
+            <div class="form-group">
+              <label>Seu WhatsApp</label>
+              <input type="tel" id="indicanteZap" required placeholder="(00) 00000-0000">
+            </div>
+          </div>
+
+          <div style="margin-top:16px">
+            <label style="display:block;margin-bottom:6px">
+              Indique seus amigos (mínimo 3, máximo 10)
+            </label>
+            <p class="muted" style="font-size:12px;margin-bottom:8px">
+              Comece preenchendo pelo menos 3 amigos. Se quiser, clique em <strong>“+ Adicionar indicado”</strong> para incluir mais pessoas.
+            </p>
+
+            <div id="indicados-container" class="grid-2" style="gap:10px 16px"></div>
+
+            <button type="button" id="addBtn" class="btn-ghost" style="margin-top:10px" onclick="addIndicado()">
+              + Adicionar indicado
+            </button>
+          </div>
+
+          <p class="muted" style="font-size:12px;margin-top:10px">
+            * O PIX de R$500,00 será pago após a instalação do projeto do amigo indicado.
+          </p>
+
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn" type="submit">Enviar indicações</button>
+          </div>
+          <p id="formMsg" class="muted" style="margin-top:8px"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section style="display:none">
+    <div class="wrap cta">
+      <h3 class="sec-title" style="margin-bottom:6px">Pronto pra deixar o sol pagar sua conta?</h3>
+      <p class="sec-sub" style="margin-bottom:12px">Podemos te atender em Gandu, Cruz das Almas e região. Vamos rodar uma análise gratuita?</p>
+      <div class="hero-actions" style="justify-content:center">
+        <button class="btn" onclick="scrollToId('form')">Começar agora</button>
+        <a class="btn-ghost" href="#cases">Ver cases</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="display:none">
+    © <span id="year"></span> Lobo Soluções • Energia Solar • “Deixe o sol pagar sua conta”.
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <div class="wa" style="display:none">
+    <small>Fale agora com a Lobo</small>
+    <a href="https://wa.me/5500000000000?text=Quero%20economizar%20com%20energia%20solar" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20.52 3.48A11.84 11.84 0 0 0 12.01 0C5.38 0 .01 5.37.01 12c0 2.11.54 4.17 1.57 6L0 24l6.18-1.6A11.96 11.96 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52ZM12 22a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.67.95.98-3.58-.24-.37A9.96 9.96 0 1 1 22 12c0 5.51-4.49 10-10 10Zm5.47-7.54c-.3-.15-1.79-.88-2.06-.98-.28-.09-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.23-.65.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.74-1.66-2.03-.17-.3-.02-.46.13-.61.13-.12.3-.31.45-.46.15-.15.2-.25.3-.43.1-.2.05-.35-.02-.5-.08-.15-.68-1.63-.93-2.22-.25-.6-.5-.5-.68-.5h-.58c-.2 0-.5.07-.76.35-.26.3-1 1-1 2.43 0 1.43 1.02 2.81 1.17 3 .15.2 2 3.06 4.86 4.29 2.86 1.23 2.86.82 3.37.77.51-.05 1.68-.68 1.92-1.34.24-.67.24-1.24.18-1.35-.06-.1-.25-.17-.55-.32Z"/>
+      </svg>
+    </a>
+  </div>
+
+  <section id="problems_and_diagnostics" style="display:none"></section>
+
+  <script>
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
+
+    function scrollToId(id){
+      const el = document.getElementById(id);
+      if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+    }
+
+    // áudio do slogan
+    const audio = document.getElementById('sloganAudio');
+    const audioBtn = document.getElementById('audioToggle');
+    let playing = false;
+    audioBtn.addEventListener('click', async () => {
+      try{
+        if(!playing){ 
+          await audio.play(); 
+          playing = true; 
+          audioBtn.textContent = '⏸️ Pausar slogan'; 
+        } else { 
+          audio.pause(); 
+          playing = false; 
+          audioBtn.textContent = '▶️ Ouvir: “Deixe o sol pagar sua conta”'; 
+        }
+      }catch(e){
+        alert('Não consegui iniciar o áudio. Adicione o arquivo MP3 ao <audio> ou tente novamente.');
+      }
+    });
+
+    // simulador simples
+    function calc(){
+      const bill = parseFloat(document.getElementById('bill').value || '0');
+      const tarifa = parseFloat(document.getElementById('tarifa').value || '1.10');
+      const tipo = document.getElementById('tipo').value;
+
+      if(bill <= 0 || tarifa <= 0){ return showCalc('-', '-', '-'); }
+
+      const kwh = bill / tarifa;
+      const fator = tipo === 'comercial' ? 0.90 : (tipo === 'rural' ? 0.92 : 0.88);
+      const economia = bill * fator;
+      const kWp = kwh / 130;
+      const custo = Math.max(kWp * 4500, 12000);
+      const paybackMeses = Math.max(Math.round(custo / Math.max(economia, 1)), 12);
+      const payback = (paybackMeses/12).toFixed(1) + ' anos';
+
+      const meter = document.querySelector('.meter > b');
+      const pct = Math.min(96, Math.max(20, Math.round(fator*100)));
+      meter.style.width = pct + '%';
+
+      showCalc(
+        Math.round(kwh).toLocaleString('pt-BR') + ' kWh',
+        'R$ ' + economia.toFixed(2).toLocaleString('pt-BR'),
+        payback
+      );
+    }
+    function showCalc(kwh, econ, pb){
+      document.getElementById('kwh').textContent = kwh;
+      document.getElementById('economia').textContent = econ;
+      document.getElementById('payback').textContent = pb;
+    }
+
+    // ===== FORMULÁRIO DE INDICAÇÃO =====
+    const maxIndicados = 10;
+
+    function updateAddButtonState(){
+      const container = document.getElementById('indicados-container');
+      const atual = container.querySelectorAll('.indicado-row').length;
+      const btn = document.getElementById('addBtn');
+      if(btn){
+        if(atual >= maxIndicados){ btn.disabled = true; btn.textContent = 'Limite atingido'; }
+        else { btn.disabled = false; btn.textContent = '+ Adicionar indicado'; }
+      }
+    }
+
+    function addIndicado(){
+      const container = document.getElementById('indicados-container');
+      const atual = container.querySelectorAll('.indicado-row').length;
+      if(atual >= maxIndicados){
+        updateAddButtonState();
+        return;
+      }
+      const idx = atual + 1;
+
+      const row = document.createElement('div');
+      row.className = 'indicado-row';
+      row.innerHTML = `
+        <div class="indicado-header"><span class="chip">${idx}</span> Indicado ${idx}</div>
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" name="indicado_nome_${idx}" placeholder="Nome completo">
+        </div>
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="tel" name="indicado_tel_${idx}" placeholder="(00) 00000-0000">
+        </div>
+      `;
+      container.appendChild(row);
+      updateAddButtonState();
+    }
+
+    // cria 3 indicados iniciais
+    for(let i=0;i<3;i++){ addIndicado(); }
+    updateAddButtonState();
+
+    async function submitIndicacao(e){
+      e.preventDefault();
+      const nome = document.getElementById('indicanteNome').value.trim();
+      const zap = document.getElementById('indicanteZap').value.trim();
+      const msg = document.getElementById('formMsg');
+
+      if(!nome || !zap){
+        msg.textContent = 'Preencha seu nome e WhatsApp para continuar.';
+        msg.style.color = '#ffb3b3';
+        return false;
+      }
+
+      const container = document.getElementById('indicados-container');
+      const rows = container.querySelectorAll('.indicado-row');
+      let preenchidos = 0;
+      const indicados = [];
+
+      rows.forEach((row) => {
+        const inputs = row.querySelectorAll('input');
+        const n = inputs[0].value.trim();
+        const t = inputs[1].value.trim();
+        if(n && t){ preenchidos++; indicados.push({ nome: n, telefone: t }); }
+      });
+
+      if(preenchidos < 3){
+        msg.textContent = 'Indique pelo menos 3 amigos com nome e telefone preenchidos.';
+        msg.style.color = '#ffb3b3';
+        return false;
+      }
+      const payload = {
+        indicante: { nome, whatsapp: zap },
+        indicados,
+        meta: { submittedAt: new Date().toISOString(), userAgent: navigator.userAgent }
+      };
+      msg.textContent = 'Enviando suas indicações...';
+      msg.style.color = '#a6ffd0';
+      const btn = document.querySelector('#indicacaoForm button[type="submit"]');
+      if(btn){ btn.disabled = true; }
+      const url = 'https://n8n-n8n-webhook.nyrnfd.easypanel.host/webhook/indicacaositelobosolucoes';
+      let ok = false;
+      try{
+        const res = await fetch(url,{
+          method:'POST',
+          headers:{ 'Content-Type':'application/json' },
+          body: JSON.stringify(payload),
+          mode:'cors'
+        });
+        ok = res.ok;
+      }catch(_){ ok = false; }
+      // tentativa única para evitar logs duplicados
+      // sem terceira tentativa para evitar múltiplos erros no console
+      msg.textContent = ok ? 'Indicações enviadas! Em breve a equipe da Lobo entrará em contato.' : 'Não consegui enviar agora. Tente novamente mais tarde.';
+      msg.style.color = ok ? '#baffda' : '#ffb3b3';
+      if(btn){ btn.disabled = false; }
+      return false;
+    }
+  </script>
+</body>
+</html>
